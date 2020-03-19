@@ -1,5 +1,4 @@
 import * as React from "react";
-import { BrowserRouter } from "react-router-dom";
 import { Route, Switch } from "react-router";
 
 interface IRoutes {
@@ -30,21 +29,21 @@ const routes: IRoutes[] = [
   { path: "/soap", component: SoapCalculator },
   { path: "/shampoo", component: ShampooCalculator }
 ];
-const Routes = React.useMemo(() => {
+const Routes = React.memo(() => {
   return (
-    <>
-      <BrowserRouter>
-        <Switch>
-          {routes.map(route => (
-            <Route
-              key={route.path}
-              path={route.path}
-              component={route.component}
-              exact
-            />
-          ))}
-        </Switch>
-      </BrowserRouter>
-    </>
+    <React.Suspense fallback={<div>Loading</div>}>
+      <Switch>
+        {routes.map(route => (
+          <Route
+            key={route.path}
+            path={route.path}
+            component={route.component}
+            exact
+          />
+        ))}
+      </Switch>
+    </React.Suspense>
   );
-}, []);
+});
+
+export default Routes;

@@ -4,6 +4,8 @@ export interface IShampooCalculatorPageProps {
   id?: string;
 }
 
-export function ShampooCalculatorPage(props: IShampooCalculatorPageProps) {
+export function ShampooCalculatorPage(
+  props: React.PropsWithChildren<IShampooCalculatorPageProps>
+) {
   return <div></div>;
 }
