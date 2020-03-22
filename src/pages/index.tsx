@@ -23,11 +23,18 @@ const ShampooCalculator = React.lazy(() =>
   }))
 );
 
+const CoronaTest = React.lazy(() =>
+  import("./corona-test/index").then(module => ({
+    default: module.CoronaTestPage
+  }))
+);
+
 const routes: IRoutes[] = [
   { path: "/", component: ToiletPaperCalculator },
   { path: "/toilet-paper", component: ToiletPaperCalculator },
   { path: "/soap", component: SoapCalculator },
-  { path: "/shampoo", component: ShampooCalculator }
+  { path: "/shampoo", component: ShampooCalculator },
+  { path: "/test", component: CoronaTest }
 ];
 const Routes = React.memo(() => {
   return (
