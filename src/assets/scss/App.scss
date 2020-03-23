@@ -1,4 +1,4 @@
-$bg-color: yellow;
+$bg-color: #261da8;
 $border-color: red;
 
 .app {
@@ -9,4 +9,11 @@ $border-color: red;
   p {
     background-color: $bg-color;
   }
+}
+html,
+body,
+#root {
+  height: 100%;
+  margin: 0;
+  background-color: $bg-color;
 }
