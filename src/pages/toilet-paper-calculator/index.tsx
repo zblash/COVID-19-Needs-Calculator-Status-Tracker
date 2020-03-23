@@ -1,5 +1,6 @@
 import * as React from "react";
 import { calculateToiletPaperMountly } from "../../functions/index";
+import { UIInput } from "../../components/ui/input";
 export interface IToiletPaperCalculatorPageProps {
   id?: string;
 }
@@ -7,21 +8,21 @@ export interface IToiletPaperCalculatorPageProps {
 function ToiletPaperCalculatorPage(
   props: React.PropsWithChildren<IToiletPaperCalculatorPageProps>
 ) {
-  const [sheetUsed, setSheetUsed] = React.useState<number>(8);
+  const [sheetUsed, setSheetUsed] = React.useState<number>(6);
   const [toiletVisit, setToiletVisit] = React.useState<number>(6);
   const [sheetsOnPaper, setSheetsOnPaper] = React.useState<number>(100);
   const [calculatedPapers, setCalculatedPapers] = React.useState<number>();
 
-  const handleSheetUsedChange = React.useCallback((e: any) => {
-    setSheetUsed(parseInt(e.target.value, 10));
+  const handleSheetUsedChange = React.useCallback((e: string) => {
+    setSheetUsed(parseInt(e, 10));
   }, []);
 
-  const handleToiletVisitChange = React.useCallback((e: any) => {
-    setToiletVisit(parseInt(e.target.value, 10));
+  const handleToiletVisitChange = React.useCallback((e: string) => {
+    setToiletVisit(parseInt(e, 10));
   }, []);
 
-  const handleSheetsOnPaperChange = React.useCallback((e: any) => {
-    setSheetsOnPaper(parseInt(e.target.value, 10));
+  const handleSheetsOnPaperChange = React.useCallback((e: string) => {
+    setSheetsOnPaper(parseInt(e, 10));
   }, []);
 
   React.useEffect(() => {
@@ -34,27 +35,28 @@ function ToiletPaperCalculatorPage(
 
   return (
     <>
-      <label htmlFor="sheet-used">Sheets used per visit</label>
-      <input
-        type="number"
+      <UIInput
         id="sheet-used"
+        type="number"
         value={sheetUsed}
         onChange={handleSheetUsedChange}
+        label="Sheets used per visit"
       />
-      <label htmlFor="toilet-visit">Toilet visits per day</label>
-      <input
-        type="number"
+      <UIInput
         id="toilet-visit"
+        type="number"
         value={toiletVisit}
         onChange={handleToiletVisitChange}
+        label="Toilet visits per day"
       />
-      <label htmlFor="shets-on-paper">Sheets on Toilet Paper</label>
-      <input
+      <UIInput
+        id="shets-on-paper"
         type="number"
-        id="sheets-on-paper"
         value={sheetsOnPaper}
         onChange={handleSheetsOnPaperChange}
+        label="Sheets on Toilet Paper"
       />
+
       <p>You need {calculatedPapers}</p>
     </>
   );
