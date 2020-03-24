@@ -3,19 +3,13 @@ import { calculateToiletPaperMountly } from "../../functions/index";
 import { UIInput } from "../../components/ui/input";
 import styled from "styled-components";
 import ToiletPaper from "../../assets/img/toilet-paper.svg";
+import { Container } from "../../components/container";
+import { UIRange } from "../../components/ui/range";
 
 export interface IToiletPaperCalculatorPageProps {
   id?: string;
 }
 
-const StyledFormContainer = styled.div`
-  width: 58%;
-  padding-top: 12%;
-  margin-right: 2%;
-  height: 100%;
-  float: right;
-  background-color: #f0f4ff;
-`;
 const StyledInputSep = styled.div`
   width: 50%;
   float: left;
@@ -29,37 +23,7 @@ const StyledInputWrapper = styled.div`
   display: flex;
   justify-content: center;
 `;
-const StyledRangeWrapper = styled.div`
-  width: 100%;
-`;
-const StyledInputRange = styled.input`
-  -webkit-appearance: none;
-  margin-top: 10px;
-  width: 100%;
-  height: 15px;
-  border-radius: 5px;
-  background: #d3d3d3;
-  outline: none;
-  opacity: 0.7;
-  -webkit-transition: 0.2s;
-  transition: opacity 0.2s;
-  ::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    appearance: none;
-    width: 25px;
-    height: 25px;
-    border-radius: 50%;
-    background: #4caf50;
-    cursor: pointer;
-  }
-  ::-moz-range-thumb {
-    width: 25px;
-    height: 25px;
-    border-radius: 50%;
-    background: #4caf50;
-    cursor: pointer;
-  }
-`;
+
 const StyledCalculationWrapper = styled.div`
   margin-top: 5%;
   width: 100%;
@@ -112,71 +76,62 @@ function ToiletPaperCalculatorPage(
   }, [sheetsOnPaper, toiletVisit, sheetUsed, setCalculatedPapers]);
 
   return (
-    <>
-      <StyledFormContainer>
-        <StyledInputSep>
-          <StyledInputWrapper>
-            <UIInput
-              id="toilet-visit"
-              type="number"
-              value={toiletVisit}
-              onChange={handleToiletVisitChange}
-              label="Toilet visits per day"
-            />
-          </StyledInputWrapper>
-        </StyledInputSep>
-        <StyledInputSep>
-          <StyledInputWrapper>
-            <UIInput
-              id="shets-on-paper"
-              type="number"
-              value={sheetsOnPaper}
-              onChange={handleSheetsOnPaperChange}
-              label="Sheets on Toilet Paper"
-            />
-          </StyledInputWrapper>
-        </StyledInputSep>
+    <Container>
+      <StyledInputSep>
         <StyledInputWrapper>
-          <StyledRangeWrapper>
-            <label htmlFor="sheet-used">
-              Sheets used per visit ({sheetUsed})
-            </label>
-            <StyledInputRange
-              id="sheet-used"
-              type="range"
-              min="2"
-              max="25"
-              value={sheetUsed}
-              onChange={(e: any) => handleSheetUsedChange(e.target.value)}
-            />
-          </StyledRangeWrapper>
+          <UIInput
+            id="toilet-visit"
+            type="number"
+            value={toiletVisit}
+            onChange={handleToiletVisitChange}
+            label="Toilet visits per day"
+          />
         </StyledInputWrapper>
+      </StyledInputSep>
+      <StyledInputSep>
+        <StyledInputWrapper>
+          <UIInput
+            id="shets-on-paper"
+            type="number"
+            value={sheetsOnPaper}
+            onChange={handleSheetsOnPaperChange}
+            label="Sheets on Toilet Paper"
+          />
+        </StyledInputWrapper>
+      </StyledInputSep>
+      <StyledInputWrapper>
+        <UIRange
+          label="Sheets used per visit"
+          id="sheet-used"
+          min={2}
+          max={25}
+          value={sheetUsed}
+          onChange={handleSheetUsedChange}
+        />
+      </StyledInputWrapper>
 
-        <StyledCalculationWrapper>
-          <StyledSummary>
-            <StyledH>{calculatedPapers}</StyledH>
-            <div>
-              <StyledP>
-                <strong>Toilet Paper Rolls per month</strong>
-              </StyledP>
-              <StyledP>
-                <span>
-                  Caluclated with a {sheetsOnPaper} sheets toilet paper
-                </span>
-              </StyledP>
-            </div>
-          </StyledSummary>
-          <StyledSummary>
-            {calculatedPapers &&
-              Array(calculatedPapers)
-                .fill(0)
-                .map((k, i) => (
-                  <StyledImg key={i} src={ToiletPaper} alt="toilet-paper" />
-                ))}
-          </StyledSummary>
-        </StyledCalculationWrapper>
-      </StyledFormContainer>
-    </>
+      <StyledCalculationWrapper>
+        <StyledSummary>
+          <StyledH>{calculatedPapers}</StyledH>
+          <div>
+            <StyledP>
+              <strong>Toilet Paper Rolls per month</strong>
+            </StyledP>
+            <StyledP>
+              <span>Caluclated with a {sheetsOnPaper} sheets toilet paper</span>
+            </StyledP>
+          </div>
+        </StyledSummary>
+        <StyledSummary>
+          {calculatedPapers &&
+            Array(calculatedPapers)
+              .fill(0)
+              .map((k, i) => (
+                <StyledImg key={i} src={ToiletPaper} alt="toilet-paper" />
+              ))}
+        </StyledSummary>
+      </StyledCalculationWrapper>
+    </Container>
   );
 }
 const PureToiletPaperCalculatorPage = React.memo(ToiletPaperCalculatorPage);
