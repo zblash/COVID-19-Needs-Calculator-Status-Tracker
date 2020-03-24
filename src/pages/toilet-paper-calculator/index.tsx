@@ -170,7 +170,9 @@ function ToiletPaperCalculatorPage(
             {calculatedPapers &&
               Array(calculatedPapers)
                 .fill(0)
-                .map(() => <StyledImg src={ToiletPaper} alt="React Logo" />)}
+                .map((k, i) => (
+                  <StyledImg key={i} src={ToiletPaper} alt="toilet-paper" />
+                ))}
           </StyledSummary>
         </StyledCalculationWrapper>
       </StyledFormContainer>
