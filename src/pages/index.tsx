@@ -1,5 +1,6 @@
 import * as React from "react";
 import { Route, Switch } from "react-router";
+import { CoronaStatusPage } from "./corona-status";
 
 interface IRoutes {
   path: string;
@@ -34,7 +35,8 @@ const routes: IRoutes[] = [
   { path: "/toilet-paper", component: ToiletPaperCalculator },
   { path: "/soap", component: SoapCalculator },
   { path: "/shampoo", component: ShampooCalculator },
-  { path: "/test", component: CoronaTest }
+  { path: "/test", component: CoronaTest },
+  { path: "/status/:country?", component: CoronaStatusPage }
 ];
 const Routes = React.memo(() => {
   return (
