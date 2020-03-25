@@ -1,10 +1,10 @@
-import * as React from "react";
-import styled from "styled-components";
+import * as React from 'react';
+import styled from 'styled-components';
 
 export interface UIInputProps {
   id: string;
   label: string;
-  type?: "text" | "password" | "email" | "number";
+  type?: 'text' | 'password' | 'email' | 'number';
   inputClassName?: string;
   placeholder?: string;
   onChange?: (v: string) => void;

@@ -1,10 +1,10 @@
-import * as React from "react";
-import { calculateToiletPaperMountly } from "../../functions/index";
-import { UIInput } from "../../components/ui/input";
-import styled from "styled-components";
-import ToiletPaper from "../../assets/img/toilet-paper.svg";
-import { Container } from "../../components/container";
-import { UIRange } from "../../components/ui/range";
+import * as React from 'react';
+import styled from 'styled-components';
+import ToiletPaper from '../../assets/img/toilet-paper.svg';
+import { calculateToiletPaperMountly } from '~/functions';
+import { Container } from '~/components/container';
+import { UIInput } from '~/components/ui/input';
+import { UIRange } from '~/components/ui/range';
 
 export interface IToiletPaperCalculatorPageProps {
   id?: string;
@@ -47,9 +47,7 @@ const StyledImg = styled.img`
   height: 32px;
   margin: 6px;
 `;
-function ToiletPaperCalculatorPage(
-  props: React.PropsWithChildren<IToiletPaperCalculatorPageProps>
-) {
+function ToiletPaperCalculatorPage(props: React.PropsWithChildren<IToiletPaperCalculatorPageProps>) {
   const [sheetUsed, setSheetUsed] = React.useState<number>(6);
   const [toiletVisit, setToiletVisit] = React.useState<number>(6);
   const [sheetsOnPaper, setSheetsOnPaper] = React.useState<number>(100);
@@ -69,9 +67,7 @@ function ToiletPaperCalculatorPage(
 
   React.useEffect(() => {
     if (sheetsOnPaper && toiletVisit && sheetUsed) {
-      setCalculatedPapers(
-        calculateToiletPaperMountly(sheetUsed, toiletVisit, sheetsOnPaper)
-      );
+      setCalculatedPapers(calculateToiletPaperMountly(sheetUsed, toiletVisit, sheetsOnPaper));
     }
   }, [sheetsOnPaper, toiletVisit, sheetUsed, setCalculatedPapers]);
 
@@ -126,9 +122,7 @@ function ToiletPaperCalculatorPage(
           {calculatedPapers &&
             Array(calculatedPapers)
               .fill(0)
-              .map((k, i) => (
-                <StyledImg key={i} src={ToiletPaper} alt="toilet-paper" />
-              ))}
+              .map((k, i) => <StyledImg key={i} src={ToiletPaper} alt="toilet-paper" />)}
         </StyledSummary>
       </StyledCalculationWrapper>
     </Container>

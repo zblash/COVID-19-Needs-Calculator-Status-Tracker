@@ -1,5 +1,5 @@
-import * as React from "react";
-import styled from "styled-components";
+import * as React from 'react';
+import styled from 'styled-components';
 
 export interface IContainerProps {}
 
@@ -17,4 +17,5 @@ const Container: React.SFC<IContainerProps> = props => {
 };
 
 const PureContainer = React.memo(Container);
+
 export { PureContainer as Container };

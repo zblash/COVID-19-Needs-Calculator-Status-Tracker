@@ -1,10 +1,11 @@
-import * as React from "react";
-import { calculateLiquidSoapMountly } from "../../functions";
-import { Container } from "../../components/container";
-import styled from "styled-components";
-import { UIInput } from "../../components/ui/input";
-import { UIRange } from "../../components/ui/range";
-import HandSoap from "../../assets/img/hand-soap.svg";
+import * as React from 'react';
+import styled from 'styled-components';
+
+import HandSoap from '../../assets/img/hand-soap.svg';
+import { calculateLiquidSoapMountly } from '~/functions';
+import { Container } from '~/components/container';
+import { UIInput } from '~/components/ui/input';
+import { UIRange } from '~/components/ui/range';
 
 export interface ISoapCalculatorPageProps {
   id?: string;
@@ -45,17 +46,11 @@ const StyledImg = styled.img`
   height: 32px;
   margin: 6px;
 `;
-function SoapCalculatorPage(
-  props: React.PropsWithChildren<ISoapCalculatorPageProps>
-) {
+function SoapCalculatorPage(props: React.PropsWithChildren<ISoapCalculatorPageProps>) {
   const [toiletVisit, setToiletVisit] = React.useState<number>(6);
   const [pumpPerWash, setPumpPerWash] = React.useState<number>(2);
-  const [amountSoapPerPump, setAmountSoapPerPump] = React.useState<number>(
-    0.07
-  );
-  const [calculatedLiquidSoap, setCalculatedLiquidSoap] = React.useState<
-    number
-  >();
+  const [amountSoapPerPump, setAmountSoapPerPump] = React.useState<number>(0.07);
+  const [calculatedLiquidSoap, setCalculatedLiquidSoap] = React.useState<number>();
 
   const handleToiletVisitChange = React.useCallback((e: string) => {
     setToiletVisit(parseInt(e, 10));
@@ -73,9 +68,7 @@ function SoapCalculatorPage(
   }, []);
   React.useEffect(() => {
     if (toiletVisit && pumpPerWash && amountSoapPerPump) {
-      setCalculatedLiquidSoap(
-        calculateLiquidSoapMountly(toiletVisit, pumpPerWash, amountSoapPerPump)
-      );
+      setCalculatedLiquidSoap(calculateLiquidSoapMountly(toiletVisit, pumpPerWash, amountSoapPerPump));
     }
   }, [toiletVisit, pumpPerWash, amountSoapPerPump, setCalculatedLiquidSoap]);
 
@@ -124,9 +117,7 @@ function SoapCalculatorPage(
               <strong>ML. of soap per month</strong>
             </StyledP>
             <StyledP>
-              <span>
-                Calculated with a {pumpPerWash} pump count per hand wash
-              </span>
+              <span>Calculated with a {pumpPerWash} pump count per hand wash</span>
             </StyledP>
           </div>
         </StyledSummary>
@@ -134,9 +125,7 @@ function SoapCalculatorPage(
           {calculatedLiquidSoap &&
             Array(Math.min(calculatedLiquidSoap, 75))
               .fill(0)
-              .map((k, i) => (
-                <StyledImg key={i} src={HandSoap} alt="toilet-paper" />
-              ))}
+              .map((k, i) => <StyledImg key={i} src={HandSoap} alt="toilet-paper" />)}
         </StyledSummary>
       </StyledCalculationWrapper>
     </Container>

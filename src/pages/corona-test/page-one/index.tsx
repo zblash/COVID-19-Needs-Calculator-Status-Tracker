@@ -1,5 +1,5 @@
-import * as React from "react";
-import { useCoronaTestContext } from "../../../context";
+import * as React from 'react';
+import { useCoronaTestContext } from '~/context';
 
 function PageOneComponent() {
   const { coronaTestState, setCoronaTestState } = useCoronaTestContext();
@@ -12,8 +12,8 @@ function PageOneComponent() {
         value={coronaTestState.pageOne.name}
         onChange={e =>
           setCoronaTestState({
-            type: "SET_NAME",
-            payload: { name: e.target.value }
+            type: 'SET_NAME',
+            payload: { name: e.target.value },
           })
         }
         id="name"
@@ -24,8 +24,8 @@ function PageOneComponent() {
         value={coronaTestState.pageOne.birthDate}
         onChange={e =>
           setCoronaTestState({
-            type: "SET_BIRTHDATE",
-            payload: { birthDate: parseInt(e.target.value, 10) }
+            type: 'SET_BIRTHDATE',
+            payload: { birthDate: parseInt(e.target.value, 10) },
           })
         }
         id="birth-date"
@@ -35,4 +35,5 @@ function PageOneComponent() {
 }
 
 const PurePageOneComponent = React.memo(PageOneComponent);
+
 export { PurePageOneComponent as PageOneComponent };

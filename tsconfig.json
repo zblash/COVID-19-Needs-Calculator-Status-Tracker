@@ -7,10 +7,15 @@
     "target": "es5",
     "jsx": "react",
     "lib": ["es5", "es6", "dom"],
-    "typeRoots": ["./node_modules/@types", "./src/functions/declaration.d.ts"]
+    "baseUrl": ".",
+    "typeRoots": ["./node_modules/@types", "./src/functions/declaration.d.ts"],
+    "paths": {
+      "~/*": ["src/*"]
+    }
   },
   "include": ["./src/**/*", "./src/functions/declaration.d.ts"],
   "awesomeTypescriptLoaderOptions": {
     "reportFiles": ["./src/**/*"]
-  }
+  },
+  "exclude": ["./node_modules/*"]
 }

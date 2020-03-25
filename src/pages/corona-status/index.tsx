@@ -1,6 +1,6 @@
-import * as React from "react";
-import { useParams } from "react-router";
-import { getTotalCoronaData, getCoronaDataByCountry } from "../../functions";
+import * as React from 'react';
+import { useParams } from 'react-router';
+import { getTotalCoronaData, getCoronaDataByCountry } from '~/functions';
 
 export interface ICoronaStatusPageProps {}
 interface RouteParams {
@@ -17,10 +17,7 @@ function CoronaStatusPage(props: ICoronaStatusPageProps) {
   };
 
   const fetchCountryData = async (selectedCountry: string) => {
-    let str =
-      selectedCountry.charAt(0).toUpperCase() +
-      selectedCountry.slice(1).toLowerCase();
-    console.log(str);
+    const str = selectedCountry.charAt(0).toUpperCase() + selectedCountry.slice(1).toLowerCase();
     const response = await getCoronaDataByCountry(str);
     setCountryData(response);
   };
@@ -31,13 +28,14 @@ function CoronaStatusPage(props: ICoronaStatusPageProps) {
     }
     fetchTotalData();
   }, [country]);
+
   return (
     <div>
-      {totalData && totalData.totalDeaths} dd{" "}
-      {countryData && countryData.totalDeaths}
+      {totalData && totalData.totalDeaths} dd {countryData && countryData.totalDeaths}
     </div>
   );
 }
 
 const PureCoronaStatusPage = React.memo(CoronaStatusPage);
+
 export { PureCoronaStatusPage as CoronaStatusPage };

@@ -1,6 +1,6 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
-import React = require("react");
+import React = require('react');
 
 export interface UIRangeProps {
   id: string;

@@ -1,0 +1,60 @@
+{
+  "Create Function": {
+    "prefix": "tsxFunctionAdvanced",
+    "body": [
+      "import * as React from 'react';",
+      "import styled,{colors} from '~/styled';",
+      "import { useTranslation } from '~/i18n';",
+      "",
+      "/* $1 Helpers */",
+      "interface $1Props{}",
+      "",
+      "/* $1 Constants */",
+      "",
+      "/* $1 Styles */",
+      "const Styled$1Wrapper=styled.div`",
+      "background-color:${colors.primary}",
+      "`",
+      "",
+      "/* $1 Component  */",
+      "function $1(props:React.PropsWithChildren<$1Props>){",
+      "/* $1 Variables */",
+      "const {t}=useTranslation();",
+      "/* $1 Callbacks */",
+      "",
+      "/* $1 Lifecycle  */",
+      "",
+      "",
+      "return <Styled$1Wrapper>{t('common.hello')}</Styled$1Wrapper>;",
+      "",
+      "};",
+      "const Pure$1=React.memo($1)",
+      "",
+      "export { Pure$1 as $1 } "
+    ]
+  },
+  "Create Function2": {
+    "prefix": "tsxFunction",
+    "body": [
+      "import * as React from 'react';",
+      "",
+      "/* $1 Helpers */",
+      "interface $1Props{}",
+      "",
+      "/* $1 Component */",
+      "function $1(props:React.PropsWithChildren<$1Props>){",
+      "/* Variables  */",
+      "",
+      "/* Callbacks  */",
+      "",
+      "/* Lifecycle  */",
+      "",
+      "return <div/>;",
+      "",
+      "};",
+      "const Pure$1=React.memo($1)",
+      "",
+      "export { Pure$1 as $1 } "
+    ]
+  }
+}

@@ -1,6 +1,6 @@
-import * as React from "react";
-import { Route, Switch } from "react-router";
-import { CoronaStatusPage } from "./corona-status";
+import * as React from 'react';
+import { Route, Switch } from 'react-router';
+import { CoronaStatusPage } from './corona-status';
 
 interface IRoutes {
   path: string;
@@ -9,46 +9,41 @@ interface IRoutes {
 }
 
 const ToiletPaperCalculator = React.lazy(() =>
-  import("./toilet-paper-calculator/index").then(module => ({
-    default: module.ToiletPaperCalculatorPage
-  }))
+  import('./toilet-paper-calculator/index').then(module => ({
+    default: module.ToiletPaperCalculatorPage,
+  })),
 );
 const SoapCalculator = React.lazy(() =>
-  import("./soap-calculator/index").then(module => ({
-    default: module.SoapCalculatorPage
-  }))
+  import('./soap-calculator/index').then(module => ({
+    default: module.SoapCalculatorPage,
+  })),
 );
 const ShampooCalculator = React.lazy(() =>
-  import("./shampoo-calculator/index").then(module => ({
-    default: module.ShampooCalculatorPage
-  }))
+  import('./shampoo-calculator/index').then(module => ({
+    default: module.ShampooCalculatorPage,
+  })),
 );
 
 const CoronaTest = React.lazy(() =>
-  import("./corona-test/index").then(module => ({
-    default: module.CoronaTestPage
-  }))
+  import('./corona-test/index').then(module => ({
+    default: module.CoronaTestPage,
+  })),
 );
 
 const routes: IRoutes[] = [
-  { path: "/", component: ToiletPaperCalculator },
-  { path: "/toilet-paper", component: ToiletPaperCalculator },
-  { path: "/soap", component: SoapCalculator },
-  { path: "/shampoo", component: ShampooCalculator },
-  { path: "/test", component: CoronaTest },
-  { path: "/status/:country?", component: CoronaStatusPage }
+  { path: '/', component: ToiletPaperCalculator },
+  { path: '/toilet-paper', component: ToiletPaperCalculator },
+  { path: '/soap', component: SoapCalculator },
+  { path: '/shampoo', component: ShampooCalculator },
+  { path: '/test', component: CoronaTest },
+  { path: '/status/:country?', component: CoronaStatusPage },
 ];
 const Routes = React.memo(() => {
   return (
     <React.Suspense fallback={<div>Loading</div>}>
       <Switch>
         {routes.map(route => (
-          <Route
-            key={route.path}
-            path={route.path}
-            component={route.component}
-            exact
-          />
+          <Route key={route.path} path={route.path} component={route.component} exact />
         ))}
       </Switch>
     </React.Suspense>
