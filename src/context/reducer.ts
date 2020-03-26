@@ -1,6 +1,6 @@
-import { ICoronaTestContextValues, CoronaTestActionsType } from '.';
+import { CoronaTestContextValues, CoronaTestActionsType } from '.';
 
-export const reducer = (state: ICoronaTestContextValues, action: CoronaTestActionsType) => {
+export const reducer = (state: CoronaTestContextValues, action: CoronaTestActionsType) => {
   switch (action.type) {
     case 'INCREMENT_CRR_PAGE':
       return { ...state, currentPage: state.currentPage + 1 };

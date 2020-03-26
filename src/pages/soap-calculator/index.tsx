@@ -7,7 +7,7 @@ import { Container } from '~/components/container';
 import { UIInput } from '~/components/ui/input';
 import { UIRange } from '~/components/ui/range';
 
-export interface ISoapCalculatorPageProps {
+export interface SoapCalculatorPageProps {
   id?: string;
 }
 const StyledInputSep = styled.div`
@@ -46,7 +46,7 @@ const StyledImg = styled.img`
   height: 32px;
   margin: 6px;
 `;
-function SoapCalculatorPage(props: React.PropsWithChildren<ISoapCalculatorPageProps>) {
+const SoapCalculatorPage: React.SFC = () => {
   const [toiletVisit, setToiletVisit] = React.useState<number>(6);
   const [pumpPerWash, setPumpPerWash] = React.useState<number>(2);
   const [amountSoapPerPump, setAmountSoapPerPump] = React.useState<number>(0.07);
@@ -117,7 +117,7 @@ function SoapCalculatorPage(props: React.PropsWithChildren<ISoapCalculatorPagePr
               <strong>ML. of soap per month</strong>
             </StyledP>
             <StyledP>
-              <span>Calculated with a {pumpPerWash} pump count per hand wash</span>
+              <span>Calculated with a{pumpPerWash} pump count per hand wash</span>
             </StyledP>
           </div>
         </StyledSummary>
@@ -130,7 +130,7 @@ function SoapCalculatorPage(props: React.PropsWithChildren<ISoapCalculatorPagePr
       </StyledCalculationWrapper>
     </Container>
   );
-}
+};
 
 const PureSoapCalculatorPage = React.memo(SoapCalculatorPage);
 

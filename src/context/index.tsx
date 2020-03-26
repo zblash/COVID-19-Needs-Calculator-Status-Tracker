@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { reducer } from './reducer';
 
-export interface ICoronaTestContextValues {
+export interface CoronaTestContextValues {
   currentPage: number;
   pageCount: number;
   pageOne: {
@@ -57,7 +57,7 @@ export type CoronaTestActionsType =
       payload: { lastFourteenSickness: boolean };
     };
 
-const initialCoronaTestContextState: ICoronaTestContextValues = {
+const initialCoronaTestContextState: CoronaTestContextValues = {
   currentPage: 0,
   pageCount: 3,
   pageOne: {
@@ -77,20 +77,16 @@ const initialCoronaTestContextState: ICoronaTestContextValues = {
 };
 
 const initialCoronaTestContext: {
-  coronaTestState: ICoronaTestContextValues;
+  coronaTestState: CoronaTestContextValues;
   setCoronaTestState: React.Dispatch<CoronaTestActionsType>;
 } = {
   coronaTestState: initialCoronaTestContextState,
-  setCoronaTestState: () => {
-    return null;
-  },
+  setCoronaTestState: () => null,
 };
 
 export const CoronaTestContext = React.createContext(initialCoronaTestContext);
 
-export const useCoronaTestContext = () => {
-  return React.useContext(CoronaTestContext);
-};
+export const useCoronaTestContext = () => React.useContext(CoronaTestContext);
 
 interface CoronaTestContextProviderProps {
   children: any;

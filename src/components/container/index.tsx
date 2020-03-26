@@ -1,7 +1,8 @@
+/* eslint-disable */
 import * as React from 'react';
 import styled from 'styled-components';
 
-export interface IContainerProps {}
+export interface ContainerProps {}
 
 const StyledContainer = styled.div`
   width: 58%;
@@ -12,9 +13,7 @@ const StyledContainer = styled.div`
   background-color: #f0f4ff;
 `;
 
-const Container: React.SFC<IContainerProps> = props => {
-  return <StyledContainer>{props.children}</StyledContainer>;
-};
+const Container: React.SFC<ContainerProps> = props => <StyledContainer>{props.children}</StyledContainer>;
 
 const PureContainer = React.memo(Container);
 

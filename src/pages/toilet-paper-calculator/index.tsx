@@ -6,10 +6,6 @@ import { Container } from '~/components/container';
 import { UIInput } from '~/components/ui/input';
 import { UIRange } from '~/components/ui/range';
 
-export interface IToiletPaperCalculatorPageProps {
-  id?: string;
-}
-
 const StyledInputSep = styled.div`
   width: 50%;
   float: left;
@@ -47,7 +43,7 @@ const StyledImg = styled.img`
   height: 32px;
   margin: 6px;
 `;
-function ToiletPaperCalculatorPage(props: React.PropsWithChildren<IToiletPaperCalculatorPageProps>) {
+function ToiletPaperCalculatorPage() {
   const [sheetUsed, setSheetUsed] = React.useState<number>(6);
   const [toiletVisit, setToiletVisit] = React.useState<number>(6);
   const [sheetsOnPaper, setSheetsOnPaper] = React.useState<number>(100);
@@ -114,7 +110,7 @@ function ToiletPaperCalculatorPage(props: React.PropsWithChildren<IToiletPaperCa
               <strong>Toilet Paper Rolls per month</strong>
             </StyledP>
             <StyledP>
-              <span>Caluclated with a {sheetsOnPaper} sheets toilet paper</span>
+              <span>Caluclated with a{sheetsOnPaper} sheets toilet paper</span>
             </StyledP>
           </div>
         </StyledSummary>
