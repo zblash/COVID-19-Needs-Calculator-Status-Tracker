@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { getTotalCoronaData, getCoronaDataByCountry, TotalDataValue, CountryDataValue } from '~/functions';
 import { useParams } from 'react-router';
+import { Container } from '~/components/container';
 
 interface RouteParams {
   country?: string;
@@ -12,7 +13,6 @@ const CoronaStatusPage: React.SFC = () => {
   const [countryData, setCountryData] = React.useState<CountryDataValue>();
   const fetchTotalData = async () => {
     const response = await getTotalCoronaData();
-    console.log(response);
     setTotalData(response);
   };
 
@@ -30,10 +30,12 @@ const CoronaStatusPage: React.SFC = () => {
   }, [country]);
 
   return (
-    <div>
-      {totalData && totalData.result.totalDeaths} dd
-      {countryData && countryData.result[0].totalDeaths}
-    </div>
+    <Container title="COVID-19 status in world and specify country">
+      <>
+        {totalData && totalData.result.totalDeaths} dd
+        {countryData && countryData.result[0].totalDeaths}
+      </>
+    </Container>
   );
 };
 

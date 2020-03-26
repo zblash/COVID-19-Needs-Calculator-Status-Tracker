@@ -73,7 +73,7 @@ const SoapCalculatorPage: React.SFC = () => {
   }, [toiletVisit, pumpPerWash, amountSoapPerPump, setCalculatedLiquidSoap]);
 
   return (
-    <Container>
+    <Container title="How much Liquid Soap do you really need?">
       <StyledInputSep>
         <StyledInputWrapper>
           <UIInput

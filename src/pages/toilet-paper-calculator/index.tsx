@@ -68,7 +68,7 @@ function ToiletPaperCalculatorPage() {
   }, [sheetsOnPaper, toiletVisit, sheetUsed, setCalculatedPapers]);
 
   return (
-    <Container>
+    <Container title="How much Toilet Paper do you really need?">
       <StyledInputSep>
         <StyledInputWrapper>
           <UIInput
