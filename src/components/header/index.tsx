@@ -8,9 +8,8 @@ const StyledWrapper = styled.div`
   position: fixed;
   top: 0;
   width: 100%;
-  background-color: #fff;
+  background-color: #f0f4ff;
   height: 60px;
-  con
 `;
 
 const StyledLink = styled(NavLink)`

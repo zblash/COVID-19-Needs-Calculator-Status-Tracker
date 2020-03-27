@@ -1,32 +1,22 @@
 import axios from 'axios';
 
-const API_KEY = 'apikey 5PMYYkTHSwDkgcOnEXRwIr:1ZyfRAYq5pDYYTlb6jVnyU';
-const API_URL = 'https://api.collectapi.com/corona';
-const API_TOTAL_DATA = '/totalData';
-const API_COUNTRY_DATA = '/countriesData';
+const API_URL = 'https://raw.githubusercontent.com/BlankerL/DXY-COVID-19-Data/master/json/DXYArea.json';
 
-export interface TotalDataValue {
+export interface CoronaTotalData {
   success: boolean;
-  result: {
-    totalDeaths: string;
-    totalCases: string;
-    totalRecovered: string;
-  };
+  results: CountryCoronaData[];
 }
 
-interface CountryDataResultValue {
-  country: string;
-  totalCases: string;
-  newCases: string;
-  totalDeaths: string;
-  newDeaths: string;
-  totalRecovered: string;
-  activeCases: string;
-}
-
-export interface CountryDataValue {
-  success: boolean;
-  result: CountryDataResultValue[];
+export interface CountryCoronaData {
+  locationId: string;
+  continentEnglishName: string;
+  provinceEnglishName: string;
+  countryEnglishName: string;
+  currentConfirmedCount: number;
+  confirmedCount: number;
+  suspectedCount: number;
+  curedCount: number;
+  deadCount: number;
 }
 
 export const calculateToiletPaperMountly = (sheetUsed: number, toiletVisitDaily: number, sheetsOnPaper: number) =>
@@ -36,21 +26,12 @@ export const calculateLiquidSoapMountly = (toiletVisitDaily: number, pumpPerWash
   Math.ceil(toiletVisitDaily * pumpPerWash * amountSoapPerPump * 30);
 
 const headers = () => ({
-  authorization: API_KEY,
   'Content-Type': 'application/json',
 });
 
-export const getTotalCoronaData: () => Promise<TotalDataValue> = () =>
+export const getTotalCoronaData: () => Promise<CoronaTotalData> = () =>
   axios
-    .get(API_URL + API_TOTAL_DATA, {
+    .get(API_URL, {
       headers: headers(),
-    })
-    .then(d => d.data);
-
-export const getCoronaDataByCountry: (country: string) => Promise<CountryDataValue> = (country: string) =>
-  axios
-    .get(API_URL + API_COUNTRY_DATA, {
-      headers: headers(),
-      params: { country },
     })
     .then(d => d.data);
