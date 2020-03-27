@@ -16,7 +16,7 @@ In this project, you can calculate some suplies you may need in your home also y
 `yarn run start-dev`
 
 - Build app continuously (HMR enabled)
-- App served @ `http://localhost:8080`
+- App served @ `http://localhost:3030`
 
 **Production**
 
